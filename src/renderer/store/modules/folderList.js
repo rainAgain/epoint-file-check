@@ -1,11 +1,15 @@
 const state = {
-  folderPath: '',
-  folderList: []
+  folderPath: '', // 项目文件夹地址
+  folderList: [], // 目录树
+  resultContent: 0, // 内容区域
+  pathInfo: {} // 路径信息
 }
 
 const getters = {
   folderPath: state => state.folderPath,
-  folderList: state => state.folderList
+  folderList: state => state.folderList,
+  resultContent: state => state.resultContent,
+  pathInfo: state => state.pathInfo
 }
 
 const mutations = {
@@ -40,6 +44,12 @@ const mutations = {
   },
   SET_FOLDER_PATH (state, data) {
     state.folderPath = data
+  },
+  SET_RESULT_CONTENT (state, data) {
+    state.resultContent = data
+  },
+  SET_PATH_INFO (state, data) {
+    state.pathInfo = data
   }
 }
 
@@ -49,6 +59,12 @@ const actions = {
   },
   setFolderPath ({ commit }, data) {
     commit('SET_FOLDER_PATH', data)
+  },
+  setResultContent ({ commit }, data) {
+    commit('SET_RESULT_CONTENT', data)
+  },
+  setPathInfo ({ commit }, data) {
+    commit('SET_PATH_INFO', data)
   }
 }
 

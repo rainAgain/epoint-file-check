@@ -1,0 +1,41 @@
+{
+  "name": "eslint-unit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-compat": "^2.2.0",
+    "stylelint": "^9.2.0",
+    "stylelint-no-unsupported-browser-features": "^3.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "ie 8-11",
+    "not ie_mob > 0",
+    "not Android > 0",
+    "not bb > 0",
+    "not and_chr > 0",
+    "not ios_saf > 0",
+    "not and_ff > 0",
+    "not OperaMini > 0",
+    "not op_mob > 0",
+    "not and_qq > 0",
+    "not and_uc > 0"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "jquery": true
+    }
+  },
+  "devDependencies": {
+    "stylelint-config-standard": "^18.2.0"
+  }
+}

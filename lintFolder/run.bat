@@ -1,0 +1,1 @@
+ ./node_modules/.bin/eslint -f stylish "projects/**" > "output/esresult.js"

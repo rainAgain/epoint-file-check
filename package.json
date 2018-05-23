@@ -2,8 +2,9 @@
   "name": "epoint-file-check",
   "version": "0.0.0",
   "author": "rainAgain <2582253358@qq.com>",
-  "description": "An electron-vue project",
-  "license": null,
+  "description": "代码检测工具",
+  "repository": "https://github.com/rainAgain/epoint-file-check",
+  "license": "CC0-1.0",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
@@ -53,11 +54,26 @@
     },
     "linux": {
       "icon": "build/icons"
-    }
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "menuCategory": true,
+      "installerIcon": "build/icons/icon.ico",
+      "uninstallerIcon": "build/icons/icon.ico"
+    },
+    "asar": true,
+    "asarUnpack": [
+      "lintFolder"
+    ]
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "codemirror": "^5.37.0",
+    "empty-folder": "^2.0.2",
     "files-tree": "^1.0.8",
+    "recursive-copy": "^2.0.9",
     "sl-vue-tree": "^1.4.0",
     "vue": "^2.3.3",
     "vue-electron": "^1.0.6",

@@ -16,6 +16,7 @@ module.exports = {
     'html'
   ],
   'rules': {
+    'handle-callback-err': 0,
     //方法名小括号前的空格，如 function aa () {}
     'space-before-function-paren': 0,
     'eqeqeq': 0,

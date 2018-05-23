@@ -1,0 +1,31 @@
+{
+"ignoreFiles": ["*.min.css"],               
+"defaultSeverity": "error",                 
+"extends": ["stylelint-config-standard"],   
+ "plugins": [
+    "stylelint-no-unsupported-browser-features"
+  ],
+"rules": {    
+		"plugin/no-unsupported-browser-features": [true, {
+		    "browsers": [ 
+		      	"defaults",
+			    "ie 8-11",
+			    "not ie_mob > 0",
+			    "not Android > 0",
+			    "not bb > 0",
+			    "not and_chr > 0",
+			    "not ios_saf > 0",
+			    "not and_ff > 0",
+			    "not OperaMini > 0",
+			    "not op_mob > 0",
+			    "not and_qq > 0",
+			    "not and_uc > 0"
+			],
+	    	"ignore": ["rem"]
+	    }],
+	    "no-extra-semicolons": true,
+	    "comment-empty-line-before": null,
+	    "comment-whitespace-inside": null,
+	    "comment-no-empty": null
+	}
+}
