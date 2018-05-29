@@ -23,13 +23,14 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "epoint-file-check",
-    "appId": "org.simulatedgreg.electron-vue",
+    "productName": "Epoint前端代码检测",
+    "appId": "epoint-file-check",
     "directories": {
       "output": "build"
     },
     "files": [
-      "dist/electron/**/*"
+      "dist/electron/**/*",
+      "lintFolder"
     ],
     "dmg": {
       "contents": [

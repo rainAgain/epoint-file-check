@@ -1,1 +1,1 @@
- ./node_modules/.bin/eslint -f stylish "projects/**" > "output/esresult.js"
+ ./node_modules/.bin/eslint --ignore-pattern 'projects/**/*.min.js'  -f codeframe  "projects/**/*.js" > "output/esresult.js"

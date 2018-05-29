@@ -21,7 +21,7 @@
         editor: '',
         jsResultPath: '',
         cssResultPath: '',
-        code: 'const a = 10;',
+        code: 'welcome to use the tool,this can test your css & javascript files about can they use in browser ',
         options: {
           mode: 'text/javascript',
           // lineNumbers: true,
@@ -34,7 +34,7 @@
       this.editor = CodeMirror.fromTextArea(this.$el.querySelector('textarea'), this.options)
       this.editor.setValue(this.code)
 
-      this.jsResultPath = `${this.pathInfo.rootPath}/output/jsresult.js`
+      this.jsResultPath = `${this.pathInfo.rootPath}/output/esresult.js`
       this.cssResultPath = `${this.pathInfo.rootPath}/output/cssresult.js`
     },
     watch: {

@@ -45,7 +45,7 @@ export default {
     downMenu (e) {
       const _this = this;
       document.onmousemove = function (e) {
-        let _width = e.layerX - 50;
+        let _width = e.clientX - 50;
         if (_width < _this.MINWIDTH) {
           _width = _this.MINWIDTH;
         }

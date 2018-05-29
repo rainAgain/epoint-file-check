@@ -1,1 +1,1 @@
-./node_modules/.bin/stylelint "projects/**/*.css" --fix -f string > "output/cssresult.js"
+./node_modules/.bin/stylelint "projects/**/*.css" -f string > "output/cssresult.js"

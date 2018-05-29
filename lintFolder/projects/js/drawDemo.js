@@ -327,6 +327,9 @@ Util.getQueryString = function(name) {
                         },
                         doubleClick:function(e,node) {
                             var _data = node.part.data;
+                            if(_data.type == 1) {
+				              return false;
+				            }
                             cacheData = _data;
                             attrType = 2;
                             $attrName.text(_data.name);

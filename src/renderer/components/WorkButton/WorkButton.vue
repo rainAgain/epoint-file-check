@@ -12,9 +12,14 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-start"></use>
         </svg>
       </li>
-      <li class="func-icons" title="开始测试CSS" @click="startCss">
+      <li class="func-icons" :title="toPath" @click="startCss">
         <svg class="icon-start">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-start"></use>
+        </svg>
+      </li>
+      <li class="func-icons" v-if="status">
+        <svg class="icon-start rotate">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-spinner"></use>
         </svg>
       </li>
     </ul>
@@ -34,8 +39,10 @@
     data() {
       return {
         softPath: '', // 软件地址
+        toRoot: '', // F盘
         toPath: '', // 目标文件夹
         fromPath: '', // 选择项目文件夹
+        status: false, // 是否开始执行
         options: { // 拷贝文件配置项
           overwrite: true,
           expand: true,
@@ -63,10 +70,12 @@
       startJs () {
         const _this = this;
         const lintFolder = _this.pathInfo.rootPath;
-        const cmd = `F: && cd ${lintFolder} && run.bat`;
+        const cmd = `${_this.toRoot}: && cd ${lintFolder} && run.bat`;
         _this.$store.dispatch('setResultContent', 0);
+        _this.status = true;
         $childProcess.exec(cmd, (err, stdout, stderr) => {
           console.log('完成');
+          _this.status = false;
           // if (err) {
           //   console.error(err)
           //   return;
@@ -78,9 +87,11 @@
       startCss () {
         const _this = this;
         const lintFolder = _this.pathInfo.rootPath;
-        const cmd = `F: && cd ${lintFolder} && css.bat`;
+        const cmd = `${_this.toRoot}: && cd ${lintFolder} && css.bat`;
         _this.$store.dispatch('setResultContent', 0);
+        _this.status = true;
         $childProcess.exec(cmd, (err, stdout, stderr) => {
+          _this.status = false;
           console.log('完成');
           // if (err) {
           //   console.error(err)
@@ -123,7 +134,7 @@
     created () {
       const _this = this;
       this.toPath = `${_this.pathInfo.rootPath}/projects`;
-
+      this.toRoot = _this.pathInfo.rootPath.split(':')[0];
       this.$electron.ipcRenderer.on('openfile:workButton:reply', (e, data) => {
         const _path = data[0];
         if (_path) {
@@ -143,6 +154,9 @@
           console.log('没有选择文件夹')
         }
       })
+    },
+    mounted() {
+      this.recursiveproject();
     }
   }
 </script>
@@ -170,4 +184,37 @@
     fill: rgb(251,251,251);
     cursor: pointer;
   }
+
+  .rotate {
+    -webkit-animation: rotate360 5s infinite;
+            animation: rotate360 5s infinite;
+  }
+  @keyframes rotate360
+    {
+      0% {
+        transform:rotate(0deg);
+        fill: rgb(251,251,251);
+      }
+
+      20% {
+        fill: rgb(251,0,0);
+      }
+
+      40% {
+         fill: rgb(251,251,0);
+      }
+
+      60% {
+        fill: rgb(32, 114, 180);
+      }
+
+      80% {
+        fill: rgb(32, 180, 64);
+      }
+
+      100% {
+        transform:rotate(360deg);
+        fill: rgba(251,251,251);
+      }
+    }
 </style>
