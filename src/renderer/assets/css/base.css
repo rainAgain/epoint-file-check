@@ -83,3 +83,11 @@ ol {
 .fz-12 {
   font-size: 12px;
 }
+
+.CodeMirror {
+  height:100% !important;
+}
+
+.CodeMirror-wrap pre {
+  line-height: 30px !important;
+}

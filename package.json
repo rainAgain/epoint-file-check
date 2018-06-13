@@ -30,7 +30,7 @@
     },
     "files": [
       "dist/electron/**/*",
-      "lintFolder"
+      "lintFolder.zip"
     ],
     "dmg": {
       "contents": [
@@ -66,14 +66,17 @@
     },
     "asar": true,
     "asarUnpack": [
-      "lintFolder"
+      "lintFolder.zip"
     ]
   },
   "dependencies": {
     "axios": "^0.16.1",
     "codemirror": "^5.37.0",
+    "decompress": "^4.2.0",
+    "decompress-unzip": "^4.0.1",
     "empty-folder": "^2.0.2",
     "files-tree": "^1.0.8",
+    "monaco-editor": "^0.13.1",
     "recursive-copy": "^2.0.9",
     "sl-vue-tree": "^1.4.0",
     "vue": "^2.3.3",

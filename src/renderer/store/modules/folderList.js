@@ -2,14 +2,16 @@ const state = {
   folderPath: '', // 项目文件夹地址
   folderList: [], // 目录树
   resultContent: 0, // 内容区域
-  pathInfo: {} // 路径信息
+  pathInfo: {}, // 路径信息
+  amdRequire: {}
 }
 
 const getters = {
   folderPath: state => state.folderPath,
   folderList: state => state.folderList,
   resultContent: state => state.resultContent,
-  pathInfo: state => state.pathInfo
+  pathInfo: state => state.pathInfo,
+  amdRequire: state => state.amdRequire
 }
 
 const mutations = {
@@ -50,6 +52,9 @@ const mutations = {
   },
   SET_PATH_INFO (state, data) {
     state.pathInfo = data
+  },
+  SET_AMD_REQUIRE (state, amdRequire) {
+    state.amdRequire = amdRequire
   }
 }
 
@@ -65,6 +70,9 @@ const actions = {
   },
   setPathInfo ({ commit }, data) {
     commit('SET_PATH_INFO', data)
+  },
+  setAmdRequire({ commit }, data) {
+    commit('SET_AMD_REQUIRE', data)
   }
 }
 

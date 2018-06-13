@@ -12,9 +12,9 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-start"></use>
         </svg>
       </li>
-      <li class="func-icons" :title="toPath" @click="startCss">
+      <li class="func-icons" title="开始测试CSS"  @click="startCss">
         <svg class="icon-start">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-start"></use>
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-lastfm"></use>
         </svg>
       </li>
       <li class="func-icons" v-if="status">
@@ -129,6 +129,7 @@
         });
         console.log(folderList);
         this.$store.dispatch('setFolderList', folderList);
+        _this.status = false;
       }
     },
     created () {
@@ -140,13 +141,13 @@
         if (_path) {
           this.fromPath = _path;
           empty(this.toPath, false, (o) => {
-            console.log(o);
             if (o.error) {
               console.error(`remove folder error: ${o.error}`)
             } else if (e.failed) {
               console.error(`remove folder failed:${e.failed}`)
             } else {
               // 清空目标文件夹
+              _this.status = true;
               _this.copyToLocal()
             }
           })

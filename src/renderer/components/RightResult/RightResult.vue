@@ -63,6 +63,10 @@
     height: 100%;
     padding-left: 2px;
   }
+
+  .right-result * {
+    font-family: monospace;
+  }
   .CodeMirror-focused .cm-matchhighlight {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFklEQVQI12NgYGBgkKzc8x9CMDAwAAAmhwSbidEoSQAAAABJRU5ErkJggg==);
     background-position: bottom;
@@ -73,5 +77,8 @@
 
   .CodeMirror {
     height:100%;
+  }
+  .CodeMirror-wrap pre {
+    line-height: 30px;
   }
 </style>
