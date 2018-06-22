@@ -31,10 +31,10 @@
       thisEditor.monaco = this.monaco
       const editorContainer = document.getElementById('editor')
       thisEditor.editor = this.monaco.editor.create(editorContainer, {
-        // value: "function hello() {\n\talert('Hello world!');\n}",
-        wordWrap: 'on',
+        // wordWrap: 'on',
         language: "typescript",
-        theme: 'vs-dark'
+        theme: 'vs-dark',
+        automaticLayout: true
       })
       function updateDimensions () {
         thisEditor.editor.layout()
@@ -63,12 +63,10 @@
         requireMonacoEditor(amdRequire, thisEditor)
       }
       if (thisEditor.$electron.remote.process.env.NODE_ENV != 'development') {
-        console.log(path.join(__dirname, './vs/loader.js'));
         loaderScript.setAttribute('src', './vs/loader.js')
       } else {
         loaderScript.setAttribute('src', '../node_modules/monaco-editor/dev/vs/loader.js')
       }
-      // '../node_modules/monaco-editor/dev/vs/loader.js'
       document.body.appendChild(loaderScript)
     } else {
       requireMonacoEditor(thisEditor.amdRequire, thisEditor)
@@ -93,7 +91,7 @@
     * 
     * 资源管理模块 列出选择的项目文件夹的内容，只显示 css 和 js 文件
     * 
-    * 此面板模块  显示检测的结果
+    * 此面板模块   显示检测的结果
     * 
     */`,
       monaco: {},
@@ -141,7 +139,6 @@
   width: 100%;
   height: 100%;
   padding-left: 2px;
-
 }
 
 .editor * {
