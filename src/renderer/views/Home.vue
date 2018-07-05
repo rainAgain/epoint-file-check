@@ -23,6 +23,7 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-spinner2"></use>
         </svg>
       </div>
+      <div v-if="showVersion" class="update-info">{{updateTips}} {{downloadPercent}} <span class="btns" v-if="showBtns" @click="doUpdate(1)">是</span> <span  @click="doUpdate(0)" class="btns" title="'否'会在退出软件后自动更新" v-if="showBtns">否</span> </div>
     </div>
 </template>
 
@@ -51,8 +52,12 @@ export default {
       key: '',
       MINWIDTH: 180, // 最小宽度
       menuWidth: 200, // 默认宽度
-      ready: false // 是否初始化完
-    };
+      ready: false, // 是否初始化完
+      updateTips: '', // 更新信息
+      downloadPercent: '', // 下载进度
+      showBtns: false, // 显示是否更新按钮
+      showVersion: true // 是否显示更新信息
+    }
   },
   methods: {
     downMenu (e) {
@@ -67,6 +72,31 @@ export default {
       document.onmouseup = function() {
         document.onmousemove = document.onmouseup = null;
       }
+    },
+    getUpdateInfo () {
+      this.$electron.ipcRenderer.on("message", (event, text) => {
+        console.log('自动更新-----------')
+        console.log(text);
+        this.updateTips = text;
+        if (text == '最新版已经下载完毕,是否立即更新') {
+          this.showBtns = true;
+        } else if (text == '当前为最新版') {
+          const _this = this;
+          setTimeout(function() {
+            _this.showVersion = false;
+          }, 5000)
+        }
+      });
+      this.$electron.ipcRenderer.on("downloadProgress", (event, progressObj) => {
+        this.downloadPercent = progressObj.percent || 0;
+      });
+    },
+    doUpdate (flag) {
+      if (flag) {
+        this.$electron.ipcRenderer.send('update:app', true);
+      }
+      this.showVersion = false;
+      this.showBtns = false;
     }
   },
   created () {
@@ -77,6 +107,7 @@ export default {
     } else {
       rootPath = `${_path}\\lintFolder`;
     }
+    this.getUpdateInfo();
     this.$store.dispatch('setPathInfo', {
       rootPath: rootPath
     });
@@ -140,6 +171,31 @@ export default {
     background-color: rgb(30, 30, 30);
     overflow: hidden;
   }
+  .update-info {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    height: 20px;
+    z-index: 9;
+    font-size: 12px;
+    color: #fff;
+    user-select: none;
+    cursor: default;
+  }
+
+  .btns {
+    color: #666;
+    background-color:#ffe4c4;
+    padding: 0 4px;
+    display: inline-block;
+  }
+
+  .btns:hover {
+    cursor: pointer;
+    background-color: #f7dab7;
+    box-shadow: 0 0 3px 1px rgba(251,251,251,.5)
+  }
+
   .bg-icon {
     position: absolute;
     top: 0;
@@ -176,7 +232,8 @@ export default {
   .bg-icon:before {
     content:'Tip: 只有第一次才会初始化';
     position: absolute;
-    right: 10px;
+    left: 57%;
+    margin-left: -75px;
     bottom: 5px;
     width: 150px;
     height: 20px;

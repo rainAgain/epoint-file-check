@@ -1,6 +1,6 @@
 {
   "name": "epoint-file-check",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "author": "rainAgain <2582253358@qq.com>",
   "description": "代码检测工具",
   "repository": "https://github.com/rainAgain/epoint-file-check",
@@ -71,9 +71,8 @@
     ],
     "publish": [
       {
-        "provider": "github",
-        "owner": "rainagain",
-        "repo": "epoint-file-check"
+        "provider": "generic",
+        "url": "http://192.168.201.159/jjjtest/testdownload/"
       }
     ]
   },

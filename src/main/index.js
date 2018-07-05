@@ -72,9 +72,53 @@ ipcMain.on('openfile:workButton', function (event) {
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
 
-autoUpdater.on('update-downloaded', () => {
-  autoUpdater.quitAndInstall()
+let tipMessage = {
+  error: '检测更新出错',
+  checking: '正在检查更新…',
+  updateAva: '检测到新版本,正在下载…',
+  updateNotAva: '当前为最新版',
+  hasDownload: '最新版已经下载完毕,是否立即更新'
+}
+
+const uploadUrl = 'http://192.168.201.159/jjjtest/testdownload/';
+
+autoUpdater.setFeedURL(uploadUrl)
+
+autoUpdater.on('error', () => {
+  sendUpdateMessage(tipMessage.error)
 })
+
+autoUpdater.on('checking-for-update', () => {
+  sendUpdateMessage(tipMessage.checking)
+})
+
+autoUpdater.on('update-available', () => {
+  sendUpdateMessage(tipMessage.updateAva)
+})
+
+autoUpdater.on('update-not-available', () => {
+  sendUpdateMessage(tipMessage.updateNotAva)
+})
+
+autoUpdater.on('update-downloaded', () => {
+  // autoUpdater.quitAndInstall()
+  sendUpdateMessage(tipMessage.hasDownload)
+  ipcMain.on('update:app', (flag) => {
+    if (flag) {
+      autoUpdater.quitAndInstall();
+    } else {
+      return false;
+    }
+  })
+})
+
+autoUpdater.on('download-progress', function (progressObj) {
+  mainWindow.webContents.send('downloadProgress', progressObj)
+})
+
+function sendUpdateMessage(text) {
+  mainWindow.webContents.send('message', text)
+}
 
 app.on('ready', () => {
   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()

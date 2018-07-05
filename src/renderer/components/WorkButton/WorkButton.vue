@@ -22,7 +22,6 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-spinner"></use>
         </svg>
       </li>
-      <li>v 0.0.0</li>
     </ul>
   </div>
 </template>
@@ -34,7 +33,7 @@
   const copy = require('recursive-copy')
   const $childProcess = require('child_process')
   const empty = require('empty-folder')
-
+  
   export default {
     name: 'work-button',
     data() {

@@ -15,11 +15,12 @@
     "jQuery": true,
     "$": true
   },
-  "plugins": ["compat"],
+  "plugins": ["ie-jsapi"],
   "rules": {
+    "ie-jsapi/ie-jsapi": "error",
     "indent": 0,
     "compat/compat": 0,
-    "no-console": 1,
+    "no-console": 0,
     "no-unused-vars": 1,
     "no-redeclare": 1,
     "no-alert": 1,

@@ -84,24 +84,31 @@
       cssResultPath: '',
       content: '',
       currentPost: '',
-      code: `/**
-    * 介绍说明：
-    * 
-    * 左侧按钮模块 从上到下为： 选择项目文件夹、开始检测 JS、开始检测 CSS
-    * 
-    * 资源管理模块 列出选择的项目文件夹的内容，只显示 css 和 js 文件
-    * 
-    * 此面板模块   显示检测的结果
-    * 
-    */`,
+      code: '',
       monaco: {},
       editor: {},
       editorModel: undefined
     }),
-    methods: {},
+    methods: {
+      init() {
+        const version = this.$electron.remote.app.getVersion();
+        this.code = `/**
+      * 版本: ${version}
+      * 
+      * 介绍说明：
+      * 
+      * 左侧按钮模块 从上到下为： 选择项目文件夹、开始检测 JS、开始检测 CSS
+      * 
+      * 资源管理模块 列出选择的项目文件夹的内容，只显示 css 和 js 文件
+      * 
+      * 此面板模块   显示检测的结果
+      * 
+      */`;
+      }
+    },
     mounted: function () {
+      this.init()
       loadMonacoEditor(this)
-
       this.jsResultPath = `${this.pathInfo.rootPath}/output/esresult.js`
       this.cssResultPath = `${this.pathInfo.rootPath}/output/cssresult.js`
 
