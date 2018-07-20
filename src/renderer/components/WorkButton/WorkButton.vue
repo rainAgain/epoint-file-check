@@ -52,7 +52,9 @@
             '**/*.js',
             '**/*.css',
             '!node_modules/**/*',
-            '!.gitignore'
+            '!.gitignore',
+            '!**/*.min.js',
+            '!**/*.min.css'
           ]
         },
         ignoreOptions: ['node_modules', '.git'] // 遍历目录过滤文件

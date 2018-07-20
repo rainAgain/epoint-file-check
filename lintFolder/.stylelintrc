@@ -5,7 +5,7 @@
  "plugins": [
     "stylelint-no-unsupported-browser-features"
   ],
-"rules": {    
+"rules": {
 		"plugin/no-unsupported-browser-features": [true, {
 		    "browsers": [ 
 		      	"defaults",
@@ -16,7 +16,9 @@
 			    "not and_chr > 0",
 			    "not ios_saf > 0",
 			    "not and_ff > 0",
+				"not Opera > 0",
 			    "not OperaMini > 0",
+				"not op_mini > 0",
 			    "not op_mob > 0",
 			    "not and_qq > 0",
 			    "not and_uc > 0"
@@ -26,6 +28,48 @@
 	    "no-extra-semicolons": true,
 	    "comment-empty-line-before": null,
 	    "comment-whitespace-inside": null,
-	    "comment-no-empty": null
+	    "comment-no-empty": null,
+		"indentation": null,
+		"declaration-empty-line-before": null,
+		"selector-list-comma-space-before": null,
+		"declaration-bang-space-before": null,
+		"declaration-colon-space-before": null,
+		"rule-empty-line-before": null,
+		"declaration-block-semicolon-space-after": null,
+		"declaration-block-semicolon-space-before": null,
+		"block-opening-brace-newline-after": null,
+		"block-closing-brace-space-after": null,
+		"block-closing-brace-space-before": null,
+		"block-opening-brace-space-after": null,
+		"block-opening-brace-space-before": null,
+		"declaration-block-trailing-semicolon": null,
+		"number-leading-zero": null,
+		"value-list-max-empty-lines": null,
+		"max-empty-lines": null,
+		"at-rule-name-space-after": null,
+		"function-comma-space-after": null,
+		"function-comma-space-before": null,
+		"function-parentheses-space-inside": null,
+		"block-closing-brace-empty-line-before": null,
+		"declaration-bang-space-after": null,
+		"declaration-colon-space-after": null,
+		"at-rule-name-newline-after": null,
+		"at-rule-semicolon-newline-after": null,
+		"block-closing-brace-newline-after": null,
+		"no-missing-end-of-source-newline": null,
+		"value-list-comma-newline-after": null,
+		"declaration-colon-newline-after": null,
+		"declaration-block-semicolon-newline-after": null,
+		"selector-list-comma-newline-after": null,
+		"selector-list-comma-space-after": null,
+		"media-query-list-comma-space-after": null,
+		"declaration-block-single-line-max-declarations": null,
+		"selector-combinator-space-after": null,
+		"selector-combinator-space-before": null,
+		"no-eol-whitespace": null,
+		"at-rule-empty-line-before": null,
+		"no-empty-source": null,
+		"no-duplicate-selectors": null,
+		"no-descending-specificity": null
 	}
 }

@@ -80,7 +80,7 @@ export default {
         this.updateTips = text;
         if (text == '最新版已经下载完毕,是否立即更新') {
           this.showBtns = true;
-        } else if (text == '当前为最新版') {
+        } else if (text == '当前为最新版'|| text =="检测更新失败") {
           const _this = this;
           setTimeout(function() {
             _this.showVersion = false;

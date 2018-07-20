@@ -73,14 +73,14 @@ ipcMain.on('openfile:workButton', function (event) {
  */
 
 let tipMessage = {
-  error: '检测更新出错',
+  error: '检测更新失败',
   checking: '正在检查更新…',
   updateAva: '检测到新版本,正在下载…',
   updateNotAva: '当前为最新版',
   hasDownload: '最新版已经下载完毕,是否立即更新'
 }
 
-const uploadUrl = 'http://192.168.201.159/jjjtest/testdownload/';
+const uploadUrl = '其他版本地址';
 
 autoUpdater.setFeedURL(uploadUrl)
 
