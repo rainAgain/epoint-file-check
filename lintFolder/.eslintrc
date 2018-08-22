@@ -20,14 +20,14 @@
     "ie-jsapi/ie-jsapi": "error",
     "indent": 0,
     "compat/compat": 0,
-    "no-console": 0,
-    "no-unused-vars": 1,
-    "no-redeclare": 1,
+    "no-console": 1,
+    "no-unused-vars": 0, // 无用的变量
+    "no-redeclare": 0,  // 变量重定义
     "no-alert": 1,
-    "no-dupe-args": 2,
-    "no-dupe-keys": 2,
-    "no-duplicate-case": 2,
-    "no-extra-semi": 2,
-   	"no-func-assign": 1
+    "no-dupe-args": 2, // 禁止在 function 定义中出现重复的参数
+    "no-dupe-keys": 2, // 禁止在对象字面量中出现重复的键
+    "no-duplicate-case": 2, // 禁止重复 case 标签
+    "no-extra-semi": 2, // 禁用不必要的分号如:  ;;
+   	"no-func-assign": 2 // 禁止对 function 声明重新赋值
   }
 }

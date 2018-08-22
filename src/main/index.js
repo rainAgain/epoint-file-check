@@ -80,7 +80,7 @@ let tipMessage = {
   hasDownload: '最新版已经下载完毕,是否立即更新'
 }
 
-const uploadUrl = '其他版本地址';
+const uploadUrl = 'http://fe.epoint.com.cn:8080/jjjtest/testdownload/';
 
 autoUpdater.setFeedURL(uploadUrl)
 
